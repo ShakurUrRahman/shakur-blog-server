@@ -23,7 +23,7 @@ async function run() {
     try {
         const blogCollection = client.db("shakurBlog").collection("blogs");
 
-        app.get("/", async (req, res) => {
+        app.get("/showblog", async (req, res) => {
             const query = {};
             const result = await blogCollection.find(query).toArray();
             res.send(result);
@@ -45,6 +45,7 @@ async function run() {
                 },
             };
             const result = await blogCollection.updateOne(filter, updatedDocument);
+            // console.log(result);
             res.send(result);
         });
 
